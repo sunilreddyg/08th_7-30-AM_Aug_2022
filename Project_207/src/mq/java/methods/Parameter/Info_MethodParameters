@@ -1,0 +1,18 @@
+Method Parameters:-->
+		=> Method parameters carry runtime data to methods.
+		=> Method parameters change state of method behavior
+			at runtime
+		
+		Advantages:-->
+		=> Without hard code programs we can reuse
+			methods with different input data
+			
+	Parameters are available in two types.
+	
+		=>callByvalue
+		=>callByreference
+		
+		
+		
+			
+		
