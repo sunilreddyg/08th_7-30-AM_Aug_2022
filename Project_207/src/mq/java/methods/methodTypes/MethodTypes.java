@@ -1,5 +1,6 @@
 package mq.java.methods.methodTypes;
 
+
 public class MethodTypes 
 {
 	String email="info.dsnr@gmail.com";
@@ -53,6 +54,8 @@ public class MethodTypes
 		
 		double dble=obj.method5();
 		System.out.println(dble);
+		
+		
 	}
 
 }

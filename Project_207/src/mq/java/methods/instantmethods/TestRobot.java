@@ -1,40 +1,28 @@
 package mq.java.methods.instantmethods;
 
-public class TestRobot 
+public class TestRobot
 {
 
-	public TestRobot() 
+	public void WalkTest()
 	{
-		System.out.println("Power is On");
+		System.out.println("Walk Test Completed");
 	}
 	
-	void StartWalk()
+	
+	public void RunTest()
 	{
-		System.out.println("Robot is Walking");
+		System.out.println("Run Test Completed");
 	}
-
-	void StopWalk()
+	
+	public void RunAllTests()
 	{
-		System.out.println("Robot Stop");
- 	}
-
-
+		 WalkTest();
+		 RunTest();	
+	}
+	
 	public static void main(String[] args) 
 	{
-		//new TestRobot().StartWalk();
-		//new TestRobot().StopWalk();
-		
-		/*
-		 * Creating object to class
-		 * 
-		 * 		Classname obj=new Classname();
-		 * 		obj.methodname();
-		 */
-		
-		TestRobot x=new TestRobot();
-		x.StartWalk();
-		x.StopWalk();
-		
+		 new TestRobot().RunAllTests();
 	}
-
+	
 }
