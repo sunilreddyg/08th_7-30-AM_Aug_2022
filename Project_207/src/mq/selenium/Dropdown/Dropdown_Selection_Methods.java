@@ -30,6 +30,8 @@ public class Dropdown_Selection_Methods {
 		//Selecting Dropdown option using index property
 		WebElement DOB_year=driver.findElement(By.id("year"));
 		new Select(DOB_year).selectByIndex(21);
+		
+		
 
 	}
 
