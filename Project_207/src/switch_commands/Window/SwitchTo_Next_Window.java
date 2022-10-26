@@ -1,6 +1,5 @@
 package switch_commands.Window;
 
-import java.util.Iterator;
 import java.util.Set;
 
 import org.openqa.selenium.By;
@@ -10,11 +9,10 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class SwitchTo_Second_Window {
+public class SwitchTo_Next_Window {
 
-	public static void main(String[] args) throws Exception {
-		
-		
+	public static void main(String[] args) throws Exception 
+	{
 		
 		WebDriverManager.firefoxdriver().setup();
 		WebDriver driver=new FirefoxDriver();     //Launching browser method
@@ -22,26 +20,34 @@ public class SwitchTo_Second_Window {
 	    driver.manage().window().maximize();
 	    Thread.sleep(4000);
 	    
+	    //Get Current Window Dynamic ID
+	    String MainWindowID=driver.getWindowHandle();
+	    
 	    //Clicking Hyperlink [Open Page at New Window/Tab]
 	    WebElement Meta=driver.findElement(By.linkText("Meta"));
 	    Meta.click();
 	    
+	    System.out.println("Before Switch Window Title is --> "+driver.getTitle());
+	    
 	    //Get All dynamic Window ID's
 	    Set<String> AllWindowIDs=driver.getWindowHandles();
+	    for (String EachWindowID : AllWindowIDs) 
+	    {
+			driver.switchTo().window(EachWindowID);
+		}
 	    
-	    //Converting set of objects into Iterators
-	    Iterator<String> itr=AllWindowIDs.iterator();
+	    /*
+	     * Here is the assumption when loop finished by default
+	     * controls exist at second window..
+	     */
 	    
-	    //Read Each iterator value using Next Keyword
-	    String WIN1=itr.next();
-	    String WIN2=itr.next();
+	    Thread.sleep(2000);
+	    System.out.println("After switch window title is ---> "+driver.getTitle());
 	    
-	    System.out.println("Before Switch Window Title is  --> "+driver.getTitle());
-	    driver.switchTo().window(WIN2);
-	    Thread.sleep(3000);
-	    System.out.println("After Switch Window title is ---> "+driver.getTitle());
-	    driver.switchTo().window(WIN1);
-	    System.out.println("main Window Title is --> "+driver.getTitle());
+
+	    //Get Controls Back to MainWindow
+	    driver.switchTo().window(MainWindowID);
+	    System.out.println("Main window title is ---> "+driver.getTitle());
 	}
 
 }
