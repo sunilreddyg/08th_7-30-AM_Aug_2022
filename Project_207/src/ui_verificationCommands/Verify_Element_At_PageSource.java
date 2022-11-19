@@ -14,7 +14,7 @@ public class Verify_Element_At_PageSource {
 		driver.manage().window().maximize();
 		driver.get("https://facebook.com");
 		
-		
+	
 		if(driver.getPageSource().contains("email"))
 		{
 			WebElement Email=driver.findElement(By.id("email"));
@@ -23,8 +23,9 @@ public class Verify_Element_At_PageSource {
 		}
 		else
 		{
-			System.out.println("Element is not presented at source");
+			System.out.println("Element not presented at source");
 		}
+		
 
 	}
 

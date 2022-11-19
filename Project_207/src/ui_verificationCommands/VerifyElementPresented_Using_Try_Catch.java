@@ -5,15 +5,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class VerifyElementPresented_Using_Try_Catch {
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class VerifyElementPresented_Using_Try_Catch 
+{
 
 	public static void main(String[] args) 
 	{
 		
-		System.setProperty("webdriver.gecko.driver","C:\\Users\\MINDQ\\Desktop\\new_drivers\\geckodriver.exe");
+		WebDriverManager.firefoxdriver().setup();
 		WebDriver driver=new FirefoxDriver();
 		driver.manage().window().maximize();
 		driver.get("https://facebook.com");
+		
 		
 		try {
 			
@@ -24,6 +28,11 @@ public class VerifyElementPresented_Using_Try_Catch {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		
+		System.out.println("Continued");
+		
+		
 	}
 
 }
