@@ -162,7 +162,7 @@ Example:--> Manage explicitwait until expected element hide from webpage
 		wait.until(ExpectedConditions.InvisibilityOf(WebElemnet Element));
 ================================================================================
 PresenceofElementLocated:-->
-		An expecation to verify expected element source available at backend
+		An expectation to verify expected element source available at backend
 		htmlsource   [Document object model]
 
 Example:--> Manage explicitwait until expected object found at DOM.
