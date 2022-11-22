@@ -3,13 +3,19 @@ package library;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.util.Date;
 import java.util.Set;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.io.FileHandler;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class Common_Reusable_actions
@@ -17,13 +23,50 @@ public class Common_Reusable_actions
 	
 	WebDriver driver;
 	String mainwindow;
+	WebDriverWait wait;
+	
 	public Common_Reusable_actions(WebDriver driver)
 	{
 		this.driver=driver;
 		mainwindow=driver.getWindowHandle();
+		wait=new WebDriverWait(driver, Duration.ofSeconds(100));
 	}
 	
 	
+	
+	public void ClickOnElement(String Xpath)
+	{
+		try {
+			wait.until(ExpectedConditions.visibilityOfElementLocated
+					(By.xpath(Xpath))).click();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void SelectingDropdown(String Xpath,String OptionName)
+	{
+		try {
+			ManageExplicitWait("visible", Xpath, null);
+			new Select(driver.findElement(By.xpath(Xpath))).selectByVisibleText(OptionName);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
+	public void TypeText(String Xpath,String Input)
+	{
+		try {
+			wait.until(ExpectedConditions.visibilityOfElementLocated
+					(By.xpath(Xpath))).sendKeys(Input);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+
 	public void CaptureScreen_At_Page() 
 	{
 		//Get Current System Date
@@ -111,6 +154,42 @@ public class Common_Reusable_actions
 			FileHandler.copy(src, new File("Screens\\"+ImageName+".png"));
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+	}
+	
+	
+	
+	//ManageExplicitwait
+	public void ManageExplicitWait(String WaitType,String Location,String Input)
+	{
+		
+		switch (WaitType) 
+		{
+		case "visible":
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Location)));
+			break;
+
+		case "presence":
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(Location)));
+			break;
+			
+		case "text":
+			wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath(Location), Input));
+			break;
+			
+		case "value":
+			wait.until(ExpectedConditions.textToBePresentInElementValue(By.xpath(Location), Input));
+			break;
+			
+		case "alert":
+			wait.until(ExpectedConditions.alertIsPresent());
+			break;
+			
+		case "frame":
+			wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.xpath(Location)));
+			break;
+		default:
+			break;
 		}
 	}
 		
