@@ -35,6 +35,9 @@ public class StateElement_Reference_Exception
 		//Method Refresh Page
 		driver.navigate().refresh();
 		
+		
+		driver.findElement(By.id("pass")).sendKeys("dshfdsjfkldskfjdksjf");
+		
 		Password.clear();
 		Password.sendKeys("Admin");
 		

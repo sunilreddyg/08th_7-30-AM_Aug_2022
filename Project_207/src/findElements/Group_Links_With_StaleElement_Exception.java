@@ -28,7 +28,7 @@ public class Group_Links_With_StaleElement_Exception {
 			{
 				//Get Each Links using index number
 				WebElement Eachlink=AllLinks.get(j);
-				System.out.println(Eachlink.getText()+"      "+driver.getTitle());
+				//System.out.println(Eachlink.getText()+"      "+driver.getTitle());
 				
 				Eachlink.click();
 				Thread.sleep(4000);
@@ -37,7 +37,7 @@ public class Group_Links_With_StaleElement_Exception {
 				
 				//Restore all links to avoid staleelement exception
 				MenuTabs=driver.findElement(By.xpath("//h1[.='Recharge & Pay Bills on Paytm.']/following-sibling::div"));
-				
+				AllLinks=MenuTabs.findElements(By.className("_2EGQY"));
 			}
 			
 		}
