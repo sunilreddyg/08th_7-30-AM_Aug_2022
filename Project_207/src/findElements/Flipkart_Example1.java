@@ -14,7 +14,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Flipkart_Example1
 {
-	public static void main(String[] args) 
+	public static void main(String[] args) throws Exception 
 	{
 		
 		WebDriver driver=WebDriverManager.chromedriver().avoidShutdownHook().create();
@@ -36,12 +36,14 @@ public class Flipkart_Example1
 			
 			List<WebElement> Products=driver.findElement(ProductTable)
 			.findElements(By.xpath("//div[contains(@class,'_1AtVbE')]"));
+			System.out.println(Products.size());
 			
-			for (int i = 3; i < Products.size()-2; i++) 
+			for (int i = 3; i < Products.size()-4; i++) 
 			{
 				WebElement EachProduct=Products.get(i);
 				String ProductName=EachProduct.findElement(By.className("_4rR01T")).getText();
-				System.out.println(ProductName);
+				String ProductPrice=EachProduct.findElement(By.xpath("//div[@class='_30jeq3 _1_WHN1']")).getText();
+				System.out.println(ProductName+"    "+ProductPrice);
 			}
 			
 			
@@ -51,6 +53,7 @@ public class Flipkart_Example1
 				.until(ExpectedConditions.invisibilityOfElementLocated(NextButton));
 			} catch (Exception e) {
 				driver.findElement(NextButton).click();
+				Thread.sleep(5000);
 				//e.printStackTrace();
 			}
 			
