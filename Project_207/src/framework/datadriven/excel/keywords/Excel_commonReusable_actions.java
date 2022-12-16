@@ -2,7 +2,6 @@ package framework.datadriven.excel.keywords;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -51,10 +50,20 @@ public class Excel_commonReusable_actions
 	 *  Keyword:--> Write Cell Data
 	 * Description:-->
 	 */
-	public static void WriteCellData_At_newCell(int row, int cell,String text)
+	public static void WriteData_NewRow_And_Newcell(int row, int cell,String text)
+	{
+		sht.createRow(row).createCell(cell).setCellValue(text);
+	}
+	
+	/* 
+	 *  Keyword:--> Write Cell Data
+	 * Description:-->
+	 */
+	public static void WriteData_At_exsitingRow_And_NewCell(int row, int cell,String text)
 	{
 		sht.getRow(row).createCell(cell).setCellValue(text);
 	}
+	
 	
 	
 	
