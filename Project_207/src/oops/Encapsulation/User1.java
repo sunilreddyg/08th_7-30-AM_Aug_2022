@@ -14,6 +14,9 @@ public class User1 {
 		obj.setName("Mindq");
 		System.out.println(obj.getName());
 		
+		obj.setMobile("9030248855");
+		System.out.println(obj.getMobile());
+		
 	}
 
 }
