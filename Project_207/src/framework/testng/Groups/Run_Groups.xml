@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<suite name="Suite4">
+<test name="TestC" verbose="2">
+
+
+		<groups>
+			<run>
+				<include name="Reg1"></include>
+			</run>
+		</groups>
+
+		<classes>
+			<class name="framework.testng.Groups.TestSuite1"/>
+			<class name="framework.testng.Groups.TestSuite2"/>
+			<class name="framework.testng.Groups.TestSuite3"/>
+		</classes>
+	</test>
+</suite>
