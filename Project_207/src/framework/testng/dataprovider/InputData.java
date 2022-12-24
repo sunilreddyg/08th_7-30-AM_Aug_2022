@@ -35,6 +35,22 @@ public class InputData
 		  
   }
   
+  
+  @DataProvider
+  public static Object[][] StudentDetails() 
+   {
+    return new Object[][] 
+   {
+      new Object[] {"Ajay","9030248855","BSC" },
+      new Object[] {"Rani","8789785241","B-tech" },
+      new Object[] {"Suresh","987897887","M-tech" },
+      new Object[] {"Sam","987897887","BCOM" },
+    };
+  }
+  
+  
+  
+  
   @Test(dataProvider="ProductInfo")
   public void VerifyProductDetails(String ProductName,String Config,String quantity)
   {
